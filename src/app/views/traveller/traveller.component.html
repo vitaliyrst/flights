@@ -1,0 +1,106 @@
+<div class="traveller-view">
+
+  <div class="traveller-form-wrapper">
+    <h2>Travellers</h2>
+
+    <form class="form" [formGroup]="form">
+      <h3>Traveller 1: Adult</h3>
+
+      <div class="form-control">
+        <label class="form-label">First Name</label>
+        <input class="form-field" type="text" formControlName="firstName" placeholder="First Name" />
+      </div>
+
+      <div class="form-control">
+        <label class="form-label">Last Name</label>
+        <input class="form-field" type="text" formControlName="lastName" placeholder="Last Name" />
+      </div>
+
+      <div class="form-control">
+        <label class="form-label">Gender</label>
+
+        <div class="radio-inputs-container">
+          <div class="wrapper">
+            <p-radio-button formControlName="gender" id="male" name="gender" inputId="male" value="male" />
+            <label for="male">Male</label>
+          </div>
+
+          <div class="wrapper">
+            <p-radio-button formControlName="gender" id="female" name="gender" inputId="female" value="female" />
+            <label for="female">Female</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="date-of-birth-container">
+        <div class="form-control">
+          <label class="form-label">Month of birth</label>
+          <p-date-picker
+            placeholder="Month of Birth"
+            formControlName="month"
+            view="month"
+            dateFormat="dd - M"
+            [iconDisplay]="'input'"
+            [showIcon]="true"
+          >
+            <ng-template #inputicon let-clickCallBack="clickCallBack">
+              <i class="pi pi-chevron-down" style="font-size: 12px" (click)="clickCallBack($event)"></i>
+            </ng-template>
+          </p-date-picker>
+        </div>
+
+        <div class="form-control">
+          <label class="form-label">Day of birth</label>
+          <p-select placeholder="Day of birth" formControlName="day" [options]="daysForSelect" />
+        </div>
+
+        <div class="form-control">
+          <label class="form-label">Year of birth</label>
+          <p-date-picker
+            placeholder="Year of birth"
+            formControlName="year"
+            view="year"
+            dateFormat="yy"
+            [iconDisplay]="'input'"
+            [showIcon]="true"
+          >
+            <ng-template #inputicon let-clickCallBack="clickCallBack">
+              <i class="pi pi-chevron-down" style="font-size: 12px" (click)="clickCallBack($event)"></i>
+            </ng-template>
+          </p-date-picker>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <label class="form-label">Citizenship</label>
+        <p-select placeholder="Citizenship" formControlName="citizenship" optionValue="name"
+                  optionLabel="name" [options]="countriesForSelect" />
+      </div>
+    </form>
+
+    <div class="buttons-container">
+      <button class="button white" (click)="onBackClick()">Back</button>
+      <button class="button dark" (click)="onConfirmClick()">Confirm</button>
+    </div>
+  </div>
+
+  <div class="summary-wrapper">
+    <h2>Price summary</h2>
+
+    <div class="summary-container">
+      <div class="price">
+        <div class="wrapper">
+          <img src="/images/plane_icon.svg" alt="plane icon"/>
+          <span class="text">Flight</span>
+        </div>
+        <span class="text">{{ flightPlan.price | currency }}</span>
+      </div>
+      <div class="total">
+        <span class="text">Total</span>
+        <span class="total-price">
+          {{ flightPlan.price  | currency : 'USD' : 'symbol' : '1.0-0' }}<b>{{ flightPlan.price  | currency | slice : flightPlan.price.toString().length  }}</b>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

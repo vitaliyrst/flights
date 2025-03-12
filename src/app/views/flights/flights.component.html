@@ -1,0 +1,96 @@
+<div class="flights-view">
+  @if (!preload) {
+    <div class="controls-container">
+      <div class="control-item">
+        <span class="name">Sort By</span>
+
+        <p-select
+          [options]="flightsState.sortOptions"
+          [(ngModel)]="flightsState.currentSort"
+          (onChange)="onSortChange($event)"
+          optionValue="value"
+          optionLabel="title"
+        />
+      </div>
+
+      <div class="control-item">
+        <span class="name">Price</span>
+
+        <div class="wrapper">
+          <span class="price-range">{{ flightsState.priceRange.current[0] | currency }} - {{ flightsState.priceRange.current[1] | currency }}</span>
+
+          <p-slider
+            [min]="flightsState.priceRange.initial[0]"
+            [max]="flightsState.priceRange.initial[1]"
+            [(ngModel)]="flightsState.priceRange.current"
+            (onChange)="onPriceChange()"
+            step="0.01"
+            [range]="true"
+          />
+        </div>
+
+      </div>
+      <div class="control-item">
+        <span class="name">Stops</span>
+
+        <div class="checkboxes-wrapper">
+          <div class="checkbox-container">
+            <p-checkbox
+              [ngStyle]="{'pointer-events': flightsState.selectedStops.all ? 'none' : 'initial'}"
+              [(ngModel)]="flightsState.selectedStops.all"
+              [binary]="true"
+              (onChange)="onStopsChange($event, 'all')"
+            />
+            <span>All stops</span>
+          </div>
+
+          <div class="checkbox-container">
+            <p-checkbox [(ngModel)]="flightsState.selectedStops.none" [binary]="true" (onChange)="onStopsChange($event, 'none')" />
+            <span>Nonstop</span>
+          </div>
+
+          <div class="checkbox-container">
+            <p-checkbox [(ngModel)]="flightsState.selectedStops.one" [binary]="true" (onChange)="onStopsChange($event, 'one')" />
+            <span>1 stop</span>
+          </div>
+
+          <div class="checkbox-container">
+            <p-checkbox [(ngModel)]="flightsState.selectedStops.two" [binary]="true" (onChange)="onStopsChange($event, 'two')" />
+            <span>2 stops</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="plan-list">
+      @for (plan of flightPlans | slice : 0 : flightsState.itemsPerPage; track plan.id) {
+        <li class="plan-card">
+          <div class="flights-wrapper">
+            @for (flightSegment of plan.flights; track $index) {
+              <app-flight-segment [flightSegment]="flightSegment"></app-flight-segment>
+            }
+          </div>
+          <div class="flight-summary">
+            <span class="price">{{ plan.price | currency }}</span>
+            <span class="sub-text">Per adult</span>
+            <button class="book-button button dark" (click)="onBookClick(plan)">Book</button>
+          </div>
+        </li>
+      }
+
+      <li>
+        @if (flightPlans.length || flightsState.itemsPerPage < flightPlans.length) {
+          <button class="show-more-button button white" (click)="onShowMoreClick()">Show more</button>
+        } @else {
+          <div class="no-flights">
+            No Flights
+          </div>
+        }
+      </li>
+    </ul>
+  } @else {
+    <div class="loading">
+      Loading
+    </div>
+  }
+</div>

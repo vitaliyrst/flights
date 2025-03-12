@@ -1,0 +1,29 @@
+@mixin Regular($fontSize, $lineHeight, $color) {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $color;
+}
+
+@mixin Medium($fontSize, $lineHeight, $color) {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $color;
+}
+
+@mixin SemiBold($fontSize, $lineHeight, $color) {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  color: $color;
+}

@@ -1,0 +1,188 @@
+@import "shared";
+
+.flights-view {
+  min-width: 944px;
+  padding: 32px;
+
+  display: grid;
+  grid-template-columns: 240px 624px;
+  grid-column-gap: 16px;
+  justify-content: center;
+
+  .controls-container {
+    height: max-content;
+    padding: 16px;
+
+    border: 1px solid $gray;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .name {
+        @include SemiBold(14px, 20px, $primary);
+      }
+
+      ::ng-deep .p-select {
+        border: 1px solid $gray;
+        border-radius: 8px;
+        box-shadow: none;
+
+        &:hover {
+          background-color: $light-gray;
+        }
+
+        &:hover,
+        &:focus,
+        &:not(.p-disabled).p-focus {
+          border: 1px solid $gray;
+          color: $primary;
+        }
+
+        .p-select-label,
+        .p-select-option {
+          color: $primary;
+        }
+
+        .p-placeholder {
+          color: $secondary-text;
+        }
+
+        .p-select-option.p-select-option-selected {
+          background: $gray;
+        }
+
+        .p-select-dropdown-icon {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      ::ng-deep .p-slider {
+        height: 1px;
+        margin-top: 8px;
+        background-color: $light-gray;
+
+        .p-slider-range {
+          height: 1px;
+          background-color: $blue;
+        }
+
+        .p-slider-handle {
+          border: 1px solid #c4c1c8;
+          background-color: $white;
+
+          &::before {
+            box-shadow: none;
+          }
+
+          &:focus-visible {
+            outline: none;
+          }
+        }
+      }
+
+      .checkboxes-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .checkbox-container {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+
+          @include Regular(14px, 20px, $primary);
+
+          ::ng-deep .p-checkbox {
+            width: 20px;
+            height: 20px;
+
+            &:hover .p-checkbox-box {
+              background-color: $gray;
+            }
+
+            &.p-checkbox-checked .p-checkbox-box {
+              background: $blue;
+              border-color: $blue;
+            }
+
+            .p-checkbox-box {
+              border: 1px solid $gray;
+              border-radius: 4px;
+              outline: none;
+              box-shadow: none;
+            }
+
+            .p-checkbox-icon {
+              width: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .plan-list {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .plan-card {
+      border: 1px solid $gray;
+      border-radius: 12px;
+
+      display: flex;
+
+      .flights-wrapper {
+        width: 100%;
+        padding: 24px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .flight-summary {
+        padding: 24px 24px 16px 23px;
+        border-left: 1px solid $gray;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .price {
+          @include SemiBold(20px, 32px, $primary);
+        }
+
+        .book-button {
+          width: 162px;
+          margin-top: auto;
+        }
+      }
+    }
+
+    .show-more-button {
+      width: 100%;
+    }
+
+    .no-flights {
+      text-align: center;
+    }
+  }
+
+  .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

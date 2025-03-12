@@ -1,0 +1,12 @@
+@import "mixins";
+@import "palette";
+@import "buttons";
+@import "forms";
+
+.text {
+  @include Regular(14px, 20px, $primary);
+}
+
+.sub-text {
+  @include Regular(14px, 20px, $secondary-text);
+}

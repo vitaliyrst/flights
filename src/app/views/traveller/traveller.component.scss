@@ -1,0 +1,116 @@
+@import "primeicons/primeicons.css";
+@import "shared";
+
+.traveller-view {
+  min-width: 944px;
+  padding: 32px;
+
+  display: grid;
+  grid-template-columns: 624px 240px;
+  grid-column-gap: 16px;
+  justify-content: center;
+
+  .traveller-form-wrapper,
+  .summary-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    h2 {
+      @include SemiBold(20px, 32px, $primary);
+    }
+  }
+
+  .traveller-form-wrapper {
+    .form {
+      padding: 16px;
+
+      border: 1px solid $gray;
+      border-radius: 12px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      h3 {
+        @include SemiBold(14px, 20px, $primary);
+      }
+
+      .radio-inputs-container {
+        display: flex;
+        gap: 16px;
+
+        .wrapper {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          label {
+            @include Regular(14px, 20px, $primary);
+          }
+        }
+      }
+
+      .date-of-birth-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+
+        .form-control {
+          width: 100%;
+        }
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .summary-wrapper {
+    .summary-container {
+      height: max-content;
+      padding: 16px;
+
+      border: 1px solid $gray;
+      border-radius: 12px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .price,
+      .total {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .price {
+        padding-bottom: 16px;
+        border-bottom: 1px solid $gray;
+
+        .wrapper {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+      }
+
+      .total {
+        height: 32px;
+        align-items: baseline;
+
+        .total-price {
+          @include Regular(32px, 32px, $primary);
+
+          b {
+            font-size: 14px;
+            line-height: 32px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}

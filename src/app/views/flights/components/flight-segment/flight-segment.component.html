@@ -1,0 +1,30 @@
+<div class="flight-segment-container">
+  <img class="airline" [src]="CDN_URL + '/' + flightSegment.airline + '.svg'"/>
+
+  <div class="wrapper">
+    <div class="info">
+      <span class="text">{{ flightSegment.departure_time | timeToAmPm }}</span>
+
+      <div class="sub-info">
+        <span class="sub-text">{{ flightSegment.departure_airport }}</span>
+        <div class="dot"></div>
+        <span class="sub-text">{{ flightSegment.departure_date | date : 'MMM d' }}</span>
+      </div>
+    </div>
+
+    <div class="info">
+      <span class="text">{{ flightSegment.arrival_time | timeToAmPm }}</span>
+
+      <div class="sub-info">
+        <span class="sub-text">{{ flightSegment.arrival_airport }}</span>
+        <div class="dot"></div>
+        <span class="sub-text">{{ flightSegment.arrival_date | date : 'MMM d' }}</span>
+      </div>
+    </div>
+
+    <div class="info">
+      <span class="text">{{ flightSegment.duration_minutes | minutesToHours }}</span>
+      <span class="sub-text">{{ flightSegment.stops === 0 ? 'Nonstop' : flightSegment.stops + ' stop' + (flightSegment.stops > 1 ? 's' : '') }}</span>
+    </div>
+  </div>
+</div>

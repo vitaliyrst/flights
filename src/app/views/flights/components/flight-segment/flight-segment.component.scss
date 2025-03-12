@@ -1,0 +1,36 @@
+@import "shared";
+
+.flight-segment-container {
+  display: flex;
+  gap: 16px;
+
+  .airline {
+    width: 40px;
+    height: 40px;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 60px;
+    grid-column-gap: 36px;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+
+      .sub-info {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .dot {
+          width: 4px;
+          height: 4px;
+
+          border-radius: 100px;
+          background-color: $gray;
+        }
+      }
+    }
+  }
+}

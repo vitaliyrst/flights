@@ -1,0 +1,26 @@
+@import "palette";
+
+.app-container {
+  min-height: 100vh;
+  background-color: $bg-color;
+
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    padding: 22px 80px;
+    border-bottom: 1px solid $gray;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .main {
+    flex: 1;
+  }
+}

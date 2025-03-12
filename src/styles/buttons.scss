@@ -1,0 +1,33 @@
+@import "mixins";
+@import "palette";
+
+.button {
+  width: max-content;
+  height: 44px;
+  padding: 12px 24px;
+
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  @include Medium(14px, 20px, $white);
+
+  &.dark {
+    background-color: $primary;
+
+    &:hover {
+      background-color: $dark-primary;
+    }
+  }
+
+  &.white {
+    background-color: $white;
+    color: $primary;
+    border: 1px solid $gray;
+
+    &:hover {
+      background-color: $gray;
+    }
+  }
+}

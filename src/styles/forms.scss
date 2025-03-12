@@ -1,0 +1,145 @@
+@import "mixins";
+@import "palette";
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .form-label {
+    @include Regular(14px, 20px, $secondary-text);
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 11px;
+
+    @include Regular(14px, 20px, $primary);
+    border: 1px solid $gray;
+    border-radius: 8px;
+    outline: none;
+
+    &::placeholder {
+      color: $secondary-text;
+    }
+
+    &:focus {
+      border: 1px solid $primary;
+    }
+
+    &.ng-invalid.ng-dirty {
+      border: 1px solid $red;
+      background-color: $light-red;
+    }
+  }
+
+  ::ng-deep .p-radiobutton {
+    width: 20px;
+    height: 20px;
+
+    &.p-radiobutton-checked:hover .p-radiobutton-box,
+    &.p-radiobutton-checked .p-radiobutton-box {
+      border-color: $blue;
+      background-color: $blue;
+    }
+
+    &.p-radiobutton-checked .p-radiobutton-box .p-radiobutton-icon {
+      transform: translateZ(0) scale(0.5, 0.5);
+    }
+
+    .p-radiobutton-box {
+      box-shadow: none;
+      outline: none;
+      border: 1px solid $gray;
+    }
+  }
+
+  ::ng-deep .p-datepicker {
+    .p-datepicker-input {
+      @include Regular(14px, 20px, $primary);
+      border: 1px solid $gray;
+      border-radius: 8px;
+      box-shadow: none;
+
+      &:hover {
+        background-color: $light-gray;
+        cursor: pointer;
+      }
+    }
+
+    .p-datepicker-header {
+      .p-datepicker-next-button,
+      .p-datepicker-prev-button {
+        color: $primary;
+
+        &:hover {
+          background-color: $light-gray;
+        }
+      }
+    }
+
+    .p-datepicker-month-view {
+      .p-datepicker-month-selected {
+        @include Regular(14px, 20px, $primary);
+        background-color: $light-gray;
+      }
+    }
+
+    .p-datepicker-year-view {
+      .p-datepicker-year-selected {
+        @include Regular(14px, 20px, $primary);
+        background-color: $light-gray;
+      }
+    }
+  }
+
+  ::ng-deep .p-select {
+    border: 1px solid $gray;
+    border-radius: 8px;
+    box-shadow: none;
+
+    &.ng-invalid.ng-dirty {
+      border: 1px solid $red;
+      background-color: $light-red;
+    }
+
+    &.ng-invalid.ng-dirty .p-placeholder {
+      color: $secondary-text;
+    }
+
+    &:hover {
+      background-color: $light-gray;
+    }
+
+    &:hover,
+    &:focus,
+    &:not(.p-disabled).p-focus {
+      border: 1px solid $gray;
+      color: $primary;
+    }
+
+    .p-select-label,
+    .p-select-option {
+      color: $primary;
+    }
+
+    .p-placeholder {
+      color: $secondary-text;
+    }
+
+    .p-select-option.p-select-option-selected {
+      background: $gray;
+    }
+
+    .p-select-dropdown-icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  ::ng-deep .ng-invalid.ng-dirty .p-inputtext,
+  ::ng-deep .ng-invalid.ng-dirty .p-radiobutton-box {
+    border: 1px solid $red;
+    background-color: $light-red;
+  }
+}
